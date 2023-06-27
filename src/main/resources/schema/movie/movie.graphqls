@@ -1,0 +1,27 @@
+interface Movie {
+    title: String
+    director: String
+}
+
+type ScaryMovie implements Movie {
+    title: String
+    director: String
+    gory: Boolean
+    scareFactor: Int
+}
+
+type ActionMovie implements Movie {
+    title: String
+    director: String
+    nrOfExplosions: Int
+}
+
+
+
+#联合类型的成员需要是具体对象类型,不能使用接口或者其他联合类型来创造一个联合类型。
+union MovieResult = ScaryMovie | ActionMovie
+
+
+extend type Query{
+    movies( title:String):[MovieResult]
+}

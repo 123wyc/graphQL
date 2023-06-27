@@ -1,0 +1,10 @@
+type Query {
+    # shows
+    shows(titleFilter: String): [Show]!
+    actors(showName: String):[Actor]
+
+}
+
+type Mutation{
+    create(show: ShowInput):Show
+}

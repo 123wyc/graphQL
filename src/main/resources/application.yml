@@ -1,0 +1,36 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/wyc?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+    hikari:
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      validation-timeout: 60000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      max-lifetime: 900000
+      # 最小连接池数量
+      minimum-idle: 10
+      # 最大连接池数量
+      maximum-pool-size: 20
+      # 配置检测连接是否有效
+      connection-test-query: SELECT 1 FROM DUAL
+      # 连接超时时间：毫秒
+      connection-timeout: 60000
+      auto-commit: true
+    type: com.zaxxer.hikari.HikariDataSource
+
+  logging:
+    level: debug
+
+  dgs:
+    graphql:
+      schema-locations:
+        - classpath*:schemas/**/*.graphql*
+mybatis-plus:
+  basePackages: com.example.graphqlv2.mapper
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

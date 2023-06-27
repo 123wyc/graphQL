@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.graphqlv2.mapper.ActorMapper">
+    
+    <insert id="BatchSava" parameterType="java.util.List">
+
+        INSERT INTO actor
+        ( name, age,show_id)
+        VALUES
+        <foreach collection ="actors" item="actor" separator =",">
+           ( #{actor.name}, #{actor.age},#{actor.showId})
+        </foreach >
+
+    </insert>
+
+</mapper>

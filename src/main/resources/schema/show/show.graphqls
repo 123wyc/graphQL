@@ -1,0 +1,29 @@
+type Show {
+    id:ID
+    title: String
+    releaseYear: Int
+    actors:[Actor]
+}
+
+input ShowInput {
+    title: String
+    releaseYear: Int
+    actors:[ActorInput]!
+}
+
+
+
+type Actor {
+    id:ID
+    name:String
+    age:Int
+    show:Show
+}
+input ActorInput{
+    id:ID
+    name:String
+    age:Int
+}
+
+
+
